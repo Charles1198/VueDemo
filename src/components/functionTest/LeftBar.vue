@@ -1,16 +1,15 @@
 <template>
   <div>
     <el-menu mode="vertical" :unique-opened="true">
-      <el-submenu v-for="(menu, index) in menuList" :index="menu.index">
+      <el-submenu v-for="(menu, index) in menuList" :index="menu.index" :key="menu.index">
         <template class="meun_level_1" slot="title">
-          <!-- <i class="el-icon-menu"></i> -->
           {{menu.title}}
         </template>
-        <el-submenu v-for="(submenu, subIndex) in menu.submenu" :index="submenu.index">
+        <el-submenu v-for="(submenu, subIndex) in menu.submenu" :index="submenu.index" :key="menu.index">
           <template style="text-align: start;width:100%" class="meun_level_2" slot="title">
             {{submenu.title}}
           </template>
-          <el-menu-item class="meun_level_3" v-for="menuitem in submenu.submenu" :index="menuitem.index">
+          <el-menu-item class="meun_level_3" v-for="menuitem in submenu.submenu" :index="menuitem.index" :key="menu.index">
             {{menuitem.title}}
           </el-menu-item>
         </el-submenu>

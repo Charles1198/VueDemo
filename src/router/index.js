@@ -6,6 +6,7 @@ import Todolist from '@/components/Todolist'
 import Flex from '@/components/Flex'
 import Axios from '@/components/Axios'
 import FunctionTest from '@/components/functionTest/FunctionTest'
+import Canvas from '@/components/Canvas'
 
 Vue.use(Router)
 
@@ -31,6 +32,10 @@ export default new Router({
     {
       path: '/FunctionTest',
       component: FunctionTest
+    },
+    {
+      path: '/Canvas',
+      component: Canvas
     }
   ]
 })

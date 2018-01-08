@@ -12,6 +12,9 @@
     <div class="hello_item">
       <router-link to="/FunctionTest">功能测试</router-link>
     </div>
+    <div class="hello_item">
+      <router-link to="/Canvas">Canvas</router-link>
+    </div>
   </div>
 </template>
 
