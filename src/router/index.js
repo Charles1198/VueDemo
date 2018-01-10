@@ -6,7 +6,7 @@ import Todolist from '@/components/Todolist'
 import Flex from '@/components/Flex'
 import Axios from '@/components/Axios'
 import FunctionTest from '@/components/functionTest/FunctionTest'
-import Canvas from '@/components/Canvas'
+import Canvas from '@/components/canvas/Canvas'
 
 Vue.use(Router)
 
