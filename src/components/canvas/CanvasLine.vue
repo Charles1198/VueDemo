@@ -64,7 +64,7 @@ function pointItemTop(index) {
   this.index = index
   this.x = Math.random() * WIDTH
   this.y = 0
-  this.vx = Math.random() * 0.1 + 0.1
+  this.vx = Math.random() * 0.2 + 0.2
 }
 
 pointItemTop.prototype.move = function () {

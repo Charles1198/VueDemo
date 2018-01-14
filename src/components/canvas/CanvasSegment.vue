@@ -9,7 +9,7 @@ let WIDTH = 800
 let HEIGHT = 300
 
 let context2
-let lineCount = 30
+let lineCount = 40
 let line = []
 
 export default {
