@@ -15,18 +15,22 @@
     <div class="hello_item">
       <router-link to="/Canvas">Canvas</router-link>
     </div>
+    <div class="hello_item">
+      <router-link to="/Sort">排序算法</router-link>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  data () {
+  data() {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
