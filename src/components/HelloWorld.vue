@@ -18,6 +18,9 @@
     <div class="hello_item">
       <router-link to="/Sort">排序算法</router-link>
     </div>
+    <div class="hello_item">
+      <router-link to="/Zhihu">仿微信小程序-知乎对战</router-link>
+    </div>
   </div>
 </template>
 

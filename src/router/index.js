@@ -9,6 +9,7 @@ import FunctionTest from '@/components/functionTest/FunctionTest'
 import TestPage from '@/components/functionTest/TestPage'
 import Canvas from '@/components/canvas/Canvas'
 import Sort from '@/components/sort/Sort'
+import Zhihu from '@/components/zhihu/Zhihu'
 
 Vue.use(Router)
 
@@ -47,6 +48,10 @@ export default new Router({
     {
       path: '/Sort',
       component: Sort
+    },
+    {
+      path: '/Zhihu',
+      component: Zhihu
     }
   ]
 })
