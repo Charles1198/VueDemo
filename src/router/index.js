@@ -10,6 +10,7 @@ import TestPage from '@/components/functionTest/TestPage'
 import Canvas from '@/components/canvas/Canvas'
 import Sort from '@/components/sort/Sort'
 import Zhihu from '@/components/zhihu/Zhihu'
+import AnimPage from '@/components/animation/AnimPage'
 
 Vue.use(Router)
 
@@ -52,6 +53,10 @@ export default new Router({
     {
       path: '/Zhihu',
       component: Zhihu
+    },
+    {
+      path: '/AnimPage',
+      component: AnimPage
     }
   ]
 })
