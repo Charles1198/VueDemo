@@ -10,7 +10,11 @@ import TestPage from '@/components/functionTest/TestPage'
 import Canvas from '@/components/canvas/Canvas'
 import Sort from '@/components/sort/Sort'
 import Zhihu from '@/components/zhihu/Zhihu'
+<<<<<<< HEAD
 import AnimPage from '@/components/animation/AnimPage'
+=======
+import UploadFile from '@/components/UploadFile'
+>>>>>>> e241f7669c6d01304b6974804e28ffa993d947d9
 
 Vue.use(Router)
 
@@ -55,8 +59,13 @@ export default new Router({
       component: Zhihu
     },
     {
+<<<<<<< HEAD
       path: '/AnimPage',
       component: AnimPage
+=======
+      path: '/UploadFile',
+      component: UploadFile
+>>>>>>> e241f7669c6d01304b6974804e28ffa993d947d9
     }
   ]
 })

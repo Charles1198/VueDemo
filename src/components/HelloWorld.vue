@@ -22,7 +22,11 @@
       <router-link to="/Zhihu">仿微信小程序-知乎对战</router-link>
     </div>
     <div class="hello_item">
+<<<<<<< HEAD
       <router-link to="/AnimPage">动效</router-link>
+=======
+      <router-link to="/UploadFile">上传文件</router-link>
+>>>>>>> e241f7669c6d01304b6974804e28ffa993d947d9
     </div>
   </div>
 </template>

@@ -24,9 +24,7 @@ span {
   width: 12px;
   height: 300px;
   border-radius: 12px;
-  border: solid;
-  border-width: 3px;
-  border-color: lightblue;
+  border: solid lightblue 3px;
   background-color: rgb(14, 14, 197);
   display: flex;
   flex-direction: column-reverse;

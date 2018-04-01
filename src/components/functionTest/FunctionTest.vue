@@ -16,9 +16,10 @@
     <el-table :data="testList" border style="width: 100%">
       <el-table-column prop="name" label="项目名称"></el-table-column>
       <el-table-column prop="progress" label="测试进度" width="120"></el-table-column>
-      <el-table-column label="操作" width="180">
+      <el-table-column label="操作" width="220">
         <template slot-scope="scope">
           <el-button size="mini" @click="toTest(scope.$index)">测试</el-button>
+          <el-button size="mini" @click="">导出</el-button>
           <el-button size="mini" type="danger" @click="deleteTest(scope.$index)">删除</el-button>
         </template>
       </el-table-column>
@@ -27,11 +28,7 @@
 </template>
 
 <script>
-import leftbar from "./Leftbar.vue";
-import testFiled from "./TestFiled.vue";
 import global from './FunGlobal'
-import bus from './EventBus.js'
-
 const localTestKey = 'localTestKey'
 
 export default {
@@ -44,16 +41,23 @@ export default {
       ]
     };
   },
-  components: {
-    leftbar,
-    testFiled
-  },
-
   mounted: function () {
-    this.testList = JSON.parse(window.localStorage.getItem(localTestKey))
-  },
+    if (window.localStorage.getItem(localTestKey) != null) {
+      this.testList = JSON.parse(window.localStorage.getItem(localTestKey))
+    }
 
+    if (this.$route.query) {
+      let testData = this.$route.query.testData
+      let index = this.$route.query.index
+
+      this.testList[index] = testData
+      this.saveTest()
+    }
+  },
   methods: {
+    /**
+     * @description 新增测试
+     */
     addNewTest: function () {
       if (this.newTest.name == '') {
         this.$message({
@@ -75,7 +79,6 @@ export default {
         }
       }
 
-      
       let test = global.testRawFile
       test.name = this.newTest.name
       test.progress = '等待测试'
@@ -86,11 +89,17 @@ export default {
       this.newTest = { name: '' }
     },
 
+    /**
+     * @description 开始/继续某次测试 
+     */
     toTest: function (index) {
-      bus.$emit('test', this.testList[index])
-      this.$router.push({ name: 'TestPage', params: { data: this.testList[index]} })
+      this.$router.push({ name: 'TestPage', params: { data: this.testList[index], index: index } })
     },
 
+    /**
+      * @description 删除某次测试 
+      * @param 要被删除的测试的索引
+      */
     deleteTest: function (index) {
       this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
         confirmButtonText: '确定',
@@ -106,7 +115,9 @@ export default {
       }).catch(() => {
       });
     },
-
+    /**
+     * @description 保存某次测试 
+     */
     saveTest: function () {
       window.localStorage.setItem(localTestKey, JSON.stringify(this.testList))
     }
@@ -131,13 +142,13 @@ h3 {
 }
 
 .test-new {
-  padding: 16px;
   font-size: 20px;
   background-color: #03a9f4;
   color: white;
   border-radius: 8px;
   margin-left: auto;
   margin-right: 0px;
+  margin-bottom: 20px;
 }
 
 .item-box {
