@@ -5,13 +5,22 @@
         </div>
         <div class="paper-tab">
             <div class="paper-tabs">
-                <!-- <button class="tab-model" :class="tabIndex == 0 ? 'tab-active' : ''" @click="shiftModel(0)">首页</button>
-                <button class="tab-model" :class="tabIndex == 1 ? 'tab-active' : ''" @click="shiftModel(1)">手动组卷</button>
-                <button class="tab-model" :class="tabIndex == 2 ? 'tab-active' : ''" @click="shiftModel(2)">智能组卷</button> -->
-      
-                <router-link tag="div" class="tab-model"  @click="shiftModel(0)" to="/PaperPage">首页</router-link>
-                <router-link tag="div" class="tab-model"  @click="shiftModel(1)" to="/PaperPage/PaperByHand">手动组卷</router-link>
-                <router-link tag="div" class="tab-model"  @click="shiftModel(2)" to="/PaperPage/PaperAuto">智能组卷</router-link>
+                <div class="tab-model" :class="tabIndex == 0 ? 'tab-model-active' : ''" @click="shiftModel(0)">首页</div>
+                <div class="tab-model" :class="tabIndex == 1 ? 'tab-model-active' : ''" @click="shiftModel(1)">
+                    <span>手动组卷</span>
+                    <div v-if='tabIndex == 1' class="dropdownWrapper" v-show='dropdownActive'>
+                        <router-link tag="div" class="tab-model" to="/PaperPage/PaperByHand">手动组卷</router-link>
+                        <router-link tag="div" class="tab-model" to="/PaperPage/PaperAuto">智能组卷</router-link>
+                    </div>
+                    <!-- <ul v-if='tabIndex == 1' class="dropdownWrapper" v-show='dropdownActive'>
+                        <li v-for='(item, index) in dropParams'>{{item}}</li>
+                    </ul> -->
+                </div>
+                <div class="tab-model" :class="tabIndex == 2 ? 'tab-model-active' : ''" @click="shiftModel(2)">智能组卷</div>
+
+                <!-- <router-link tag="div" class="tab-model" to="/PaperPage">首页</router-link>
+                <router-link tag="div" class="tab-model" to="/PaperPage/PaperByHand">手动组卷</router-link>
+                <router-link tag="div" class="tab-model" to="/PaperPage/PaperAuto">智能组卷</router-link> -->
             </div>
         </div>
         <router-view></router-view>
@@ -22,11 +31,26 @@ export default {
     name: "paper",
     data() {
         return {
-            tabIndex: 0
+            tabIndex: 1,
+            dropdownActive: true,
+            dropParams: ['亚洲', '北美洲', '欧洲', '非洲']
         }
     },
     methods: {
         shiftModel: function (index) {
+            switch (index) {
+                case 0:
+                    this.$router.push('/PaperPage')
+                    break;
+                case 1:
+                    this.$router.push('/PaperPage/PaperByHand')
+                    break;
+                case 2:
+                    this.$router.push('/PaperPage/PaperAuto')
+                    break;
+                default:
+                    break;
+            }
             this.tabIndex = index
         }
     }
@@ -47,7 +71,7 @@ $page-width: 1000px;
 
 .paper-tab {
   width: 100%;
-//   height: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -67,13 +91,16 @@ $page-width: 1000px;
 .tab-model {
   width: 120px;
   padding: 20px 0;
-  height: 100%;
-  background-color: transparent;
   text-align: center;
   color: white;
   font-size: 20px;
-  border-width: 0px;
-  border-color: yellowgreen;
+  border-width: 0;
+}
+
+.tab-model-active {
+  color: yellowgreen;
+  border-bottom-width: 3px;
+  border-bottom-color: yellowgreen;
 }
 
 //使用 router-link-active 时，主路由 /PaperPage 总是 active 的，使用 router-link-exact-active 才可以
