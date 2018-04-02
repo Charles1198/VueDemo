@@ -26,16 +26,61 @@
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 $cube-size: 300px;
 $cube-radius: $cube-size / 2;
 
 .anim1 {
-    
+  width: $cube-size;
+  height: $cube-size;
+  perspective: 1000px;
+  position: relative;
+  margin: 30px auto;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform ease 1s;
+
+  &-face {
+    border: 2px solid #000;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    opacity: 0.6;
+    backface-visibility: visible;
+    &.is-front {
+      transform: translateZ($cube-radius);
+    }
+    &.is-back {
+      transform: rotateX(-180deg) translateZ($cube-radius);
+    }
+    &.is-right {
+      transform: rotateY(90deg) translateZ($cube-radius);
+    }
+    &.is-left {
+      transform: rotateY(-90deg) translateZ($cube-radius);
+    }
+    &.is-top {
+      transform: rotateX(90deg) translateZ($cube-radius);
+    }
+    &.is-bottom {
+      transform: rotateX(-90deg) translateZ($cube-radius);
+    }
+  }
+
+  img {
+    width: 100%;
+  }
 }
 </style>
+
+
 
