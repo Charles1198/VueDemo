@@ -2,7 +2,7 @@
     <div id="exam">
         <div class="exam-head">
             <h1>手动组卷</h1>
-            <h1>手动组卷</h1>
+            <h1>按知识点</h1>
         </div>
     </div>
 </template>
@@ -11,13 +11,11 @@ export default {
     name: "exam",
     data() {
         return {
-            tabIndex: 0
+            
         }
     },
     methods: {
-        shiftModel: function (index) {
-            this.tabIndex = index
-        }
+        
     }
 }
 </script>

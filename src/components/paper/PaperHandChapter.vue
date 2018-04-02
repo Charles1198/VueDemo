@@ -1,7 +1,8 @@
 <template>
     <div id="exam">
         <div class="exam-head">
-            <h1>首页</h1>
+            <h1>手动组卷</h1>
+            <h1>按章节</h1>
         </div>
     </div>
 </template>

@@ -6,21 +6,20 @@
         <div class="paper-tab">
             <div class="paper-tabs">
                 <div class="tab-model" :class="tabIndex == 0 ? 'tab-model-active' : ''" @click="shiftModel(0)">首页</div>
-                <div class="tab-model" :class="tabIndex == 1 ? 'tab-model-active' : ''" @click="shiftModel(1)">
+                <div class="tab-model" :class="tabIndex == 1 ? 'tab-model-active' : ''" @mouseover="showDropmenu(1)" @mouseout="mouseOutFromTab">
                     <span>手动组卷</span>
-                    <div v-if='tabIndex == 1' class="dropdownWrapper" v-show='dropdownActive'>
-                        <router-link tag="div" class="tab-model" to="/PaperPage/PaperByHand">手动组卷</router-link>
-                        <router-link tag="div" class="tab-model" to="/PaperPage/PaperAuto">智能组卷</router-link>
+                    <div class="tab-dropdown" v-show='dropmenu1Active' @mouseout="mouseOutFromDropmenu">
+                        <div class="link" @click="shiftModel(10)">按章节</div>
+                        <div class="link" @click="shiftModel(11)">按知识点</div>
                     </div>
-                    <!-- <ul v-if='tabIndex == 1' class="dropdownWrapper" v-show='dropdownActive'>
-                        <li v-for='(item, index) in dropParams'>{{item}}</li>
-                    </ul> -->
                 </div>
-                <div class="tab-model" :class="tabIndex == 2 ? 'tab-model-active' : ''" @click="shiftModel(2)">智能组卷</div>
-
-                <!-- <router-link tag="div" class="tab-model" to="/PaperPage">首页</router-link>
-                <router-link tag="div" class="tab-model" to="/PaperPage/PaperByHand">手动组卷</router-link>
-                <router-link tag="div" class="tab-model" to="/PaperPage/PaperAuto">智能组卷</router-link> -->
+                <div class="tab-model" :class="tabIndex == 2 ? 'tab-model-active' : ''" @mouseover="showDropmenu(2)" @mouseout="mouseOutFromTab">
+                    <span>智能组卷</span>
+                    <div class="tab-dropdown" v-show='dropmenu2Active' @mouseout="mouseOutFromDropmenu">
+                        <div class="link" @click="shiftModel(20)">按章节</div>
+                        <div class="link" @click="shiftModel(21)">按知识点</div>
+                    </div>
+                </div>
             </div>
         </div>
         <router-view></router-view>
@@ -32,26 +31,64 @@ export default {
     data() {
         return {
             tabIndex: 1,
-            dropdownActive: true,
-            dropParams: ['亚洲', '北美洲', '欧洲', '非洲']
+            dropmenu1Active: false,
+            dropmenu2Active: false,
+            outFormTab: false,
+            outFormDropmenu: false,
         }
     },
     methods: {
+        showDropmenu: function (index) {
+            this.dropmenu1Active = index == 1
+            this.dropmenu2Active = index == 2
+        },
+        mouseOutFromTab: function () {
+            console.log('mouseOutFromTab')
+            this.outFormTab = true
+            if (this.outFormDropmenu) {
+                this.hideDropmenu()
+            }
+        },
+        mouseOutFromDropmenu: function () {
+            console.log('mouseOutFromDropmenu')
+            this.outFormDropmenu = true
+            if (this.outFormTab) {
+                this.hideDropmenu()
+            }
+        },
+
+        hideDropmenu: function () {
+            this.dropmenu1Active = false
+            this.dropmenu2Active = false
+            this.outFormTab = false
+            this.outFormDropmenu = false
+        },
+
         shiftModel: function (index) {
             switch (index) {
                 case 0:
                     this.$router.push('/PaperPage')
+                    this.tabIndex = 0
                     break;
-                case 1:
-                    this.$router.push('/PaperPage/PaperByHand')
+                case 10:
+                    this.$router.push('/PaperPage/PaperHandChapter')
+                    this.tabIndex = 1
                     break;
-                case 2:
-                    this.$router.push('/PaperPage/PaperAuto')
+                case 11:
+                    this.$router.push('/PaperPage/PaperHandKnowledgePoint')
+                    this.tabIndex = 1
+                    break;
+                case 20:
+                    this.$router.push('/PaperPage/PaperAutoChapter')
+                    this.tabIndex = 2
+                    break;
+                case 21:
+                    this.$router.push('/PaperPage/PaperAutoKnowledgePoint')
+                    this.tabIndex = 2
                     break;
                 default:
                     break;
             }
-            this.tabIndex = index
         }
     }
 }
@@ -103,9 +140,23 @@ $page-width: 1000px;
   border-bottom-color: yellowgreen;
 }
 
-//使用 router-link-active 时，主路由 /PaperPage 总是 active 的，使用 router-link-exact-active 才可以
-.router-link-exact-active {
-  color: yellowgreen;
-  border-bottom-width: 3px;
+.link {
+  font-size: 16px;
+  color: #222;
+  margin: 8px;
 }
+
+.tab-dropdown {
+  margin-top: 10px;
+  background-color: white;
+  box-shadow: 0px 2px 32px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  padding: 4px;
+}
+
+//使用 router-link-active 时，主路由 /PaperPage 总是 active 的，使用 router-link-exact-active 才可以
+// .router-link-exact-active {
+//   color: yellowgreen;
+//   border-bottom-width: 3px;
+// }
 </style>

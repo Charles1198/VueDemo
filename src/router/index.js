@@ -14,8 +14,10 @@ import AnimPage from '@/components/animation/AnimPage'
 import UploadFile from '@/components/UploadFile'
 import PaperPage from '@/components/paper/PaperPage'
 import PaperMain from '@/components/paper/PaperMain'
-import PaperByHand from '@/components/paper/PaperByHand'
-import PaperAuto from '@/components/paper/PaperAuto'
+import PaperHandChapter from '@/components/paper/PaperHandChapter'
+import PaperHandKnowledgePoint from '@/components/paper/PaperHandKnowledgePoint'
+import PaperAutoChapter from '@/components/paper/PaperAutoChapter'
+import PaperAutoKnowledgePoint from '@/components/paper/PaperAutoKnowledgePoint'
 
 Vue.use(Router)
 
@@ -76,12 +78,20 @@ export default new Router({
           component: PaperMain
         },
         {
-          path: 'PaperByHand',
-          component: PaperByHand
+          path: 'PaperHandChapter',
+          component: PaperHandChapter
         },
         {
-          path: 'PaperAuto',
-          component: PaperAuto
+          path: 'PaperHandKnowledgePoint',
+          component: PaperHandKnowledgePoint
+        },
+        {
+          path: 'PaperAutoChapter',
+          component: PaperAutoChapter
+        },
+        {
+          path: 'PaperAutoKnowledgePoint',
+          component: PaperAutoKnowledgePoint
         }
       ]
     }
