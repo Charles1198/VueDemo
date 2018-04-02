@@ -47,15 +47,15 @@
           </div>
           <div class="item-box-no-boaard">
             <h3>测试记录</h3>
-            <textarea v-model="testItem.record" name="issue" id="1" cols="60" rows="1"></textarea>
+            <el-input type="textarea" autosize v-model="testItem.record"></el-input>
           </div>
           <div class="item-box-no-boaard">
             <h3>存在问题</h3>
-            <textarea v-model="testItem.issue" name="issue" id="1" cols="60" rows="1"></textarea>
+            <el-input type="textarea" autosize v-model="testItem.issue"></el-input>
           </div>
           <div class="item-box-no-boaard">
             <h3>整改要求</h3>
-            <textarea v-model="testItem.require" name="require" id="1" cols="60" rows="1"></textarea>
+            <el-input type="textarea" autosize v-model="testItem.require"></el-input>
           </div>
         </div>
         <div class="item-box">
@@ -208,5 +208,6 @@ span {
 textarea {
   margin: 10px 10px 10px 0px;
   font-size: 18px;
+  height: auto;
 }
 </style>

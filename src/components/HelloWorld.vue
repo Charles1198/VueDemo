@@ -23,9 +23,12 @@
     </div>
     <div class="hello_item">
       <router-link to="/AnimPage">动效</router-link>
-      </div>
+    </div>
     <div class="hello_item">
       <router-link to="/UploadFile">上传文件</router-link>
+    </div>
+    <div class="hello_item">
+      <router-link to="/PaperPage">组卷页面</router-link>
     </div>
   </div>
 </template>
