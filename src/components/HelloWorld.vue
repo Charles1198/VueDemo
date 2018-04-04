@@ -30,6 +30,9 @@
     <div class="hello_item">
       <router-link to="/PaperPage">组卷页面</router-link>
     </div>
+    <div class="hello_item">
+      <router-link to="/SvgPage">svg 图</router-link>
+    </div>
   </div>
 </template>
 

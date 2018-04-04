@@ -18,6 +18,7 @@ import PaperHandChapter from '@/components/paper/PaperHandChapter'
 import PaperHandKnowledgePoint from '@/components/paper/PaperHandKnowledgePoint'
 import PaperAutoChapter from '@/components/paper/PaperAutoChapter'
 import PaperAutoKnowledgePoint from '@/components/paper/PaperAutoKnowledgePoint'
+import SvgPage from '@/components/SvgPage'
 
 Vue.use(Router)
 
@@ -94,6 +95,10 @@ export default new Router({
           component: PaperAutoKnowledgePoint
         }
       ]
+    },
+    {
+      path: '/SvgPage',
+      component: SvgPage
     }
   ]
 })
