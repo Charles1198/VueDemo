@@ -19,7 +19,6 @@
       <el-table-column label="操作" width="220">
         <template slot-scope="scope">
           <el-button size="mini" @click="toTest(scope.$index)">测试</el-button>
-          <el-button size="mini" @click="">导出</el-button>
           <el-button size="mini" type="danger" @click="deleteTest(scope.$index)">删除</el-button>
         </template>
       </el-table-column>

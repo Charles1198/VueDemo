@@ -6,11 +6,11 @@
     </div>
     <div id="test-body">
       <el-menu id="left-bar" mode="vertical" :default-openeds="defaultOpeneds">
-        <el-submenu v-for="(menu, index) in testItems" :index="menu.index" :key="menu.index">
+        <el-submenu v-for="(menu) in testItems" :index="menu.index" :key="menu.index">
           <template class="meun_level_1" slot="title">
             {{menu.title}}
           </template>
-          <el-submenu v-for="(submenu, subIndex) in menu.submenu" :index="submenu.index" :key="submenu.index">
+          <el-submenu v-for="(submenu) in menu.submenu" :index="submenu.index" :key="submenu.index">
             <template style="text-align: start;width:100%" class="meun_level_2" slot="title">
               {{submenu.title}}
             </template>

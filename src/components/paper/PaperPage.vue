@@ -13,7 +13,6 @@
                         <div class="link" @click="shiftPage(11)">按知识点</div>
                     </div>
                 </div>
-                <!-- <div class="tab-module" :class="tabIndex == 2 ? 'tab-module-active' : ''" @mouseover="showDropmenu(2)"> -->
                 <div class="tab-module" :class="tabIndex == 2 ? 'tab-module-active' : ''" @mouseenter="showDropmenu(2)">
                     <span @mouseenter="move('进入 tab')" @mouseleave="move('离开 tab')">智能组卷</span>
                     <div class="tab-dropdown" v-show='dropmenu2Active' @mouseenter="move('进入 dropdown')" @mouseleave="move('离开 dropdown')">
@@ -28,68 +27,67 @@
 </template>
 <script>
 export default {
-    name: "paper",
-    data() {
-        return {
-            tabIndex: 1,
-            dropmenu1Active: false,
-            dropmenu2Active: false,
-            outFormTab: false,
-            outFormDropmenu: false,
-        }
+  name: "paper",
+  data() {
+    return {
+      tabIndex: 0,
+      dropmenu1Active: false,
+      dropmenu2Active: false,
+      outFormTab: false,
+      outFormDropmenu: false
+    };
+  },
+  methods: {
+    move: function(message) {
+      console.log(message);
     },
-    methods: {
-        move: function(message) {
-            console.log(message)
-        },
 
-        showDropmenu: function (index) {
-            this.dropmenu1Active = index == 1
-            this.dropmenu2Active = index == 2
-        },
+    showDropmenu: function(index) {
+      this.dropmenu1Active = index == 1;
+      this.dropmenu2Active = index == 2;
+      console.log(index);
+    },
 
-        hideDropmenu: function () {
-            this.dropmenu1Active = false
-            this.dropmenu2Active = false
-            this.outFormTab = false
-            this.outFormDropmenu = false
-        },
-        /**
-        * @description 切换页面 
-        */
-        shiftPage: function (index) {
-            switch (index) {
-                case 0:
-                    this.$router.push('/PaperPage')
-                    this.tabIndex = 0
-                    break;
-                case 10:
-                    this.$router.push('/PaperPage/PaperHandChapter')
-                    this.tabIndex = 1
-                    break;
-                case 11:
-                    this.$router.push('/PaperPage/PaperHandKnowledgePoint')
-                    this.tabIndex = 1
-                    break;
-                case 20:
-                    this.$router.push('/PaperPage/PaperAutoChapter')
-                    this.tabIndex = 2
-                    break;
-                case 21:
-                    this.$router.push('/PaperPage/PaperAutoKnowledgePoint')
-                    this.tabIndex = 2
-                    break;
-                default:
-                    break;
-            }
-            this.hideDropmenu()
-        }
+    hideDropmenu: function() {
+      this.dropmenu1Active = false;
+      this.dropmenu2Active = false;
+      this.outFormTab = false;
+      this.outFormDropmenu = false;
+    },
+    /**
+     * @description 切换页面
+     */
+    shiftPage: function(index) {
+      switch (index) {
+        case 0:
+          this.$router.push("/PaperPage");
+          this.tabIndex = 0;
+          break;
+        case 10:
+          this.$router.push("/PaperPage/PaperHandChapter");
+          this.tabIndex = 1;
+          break;
+        case 11:
+          this.$router.push("/PaperPage/PaperHandKnowledgePoint");
+          this.tabIndex = 1;
+          break;
+        case 20:
+          this.$router.push("/PaperPage/PaperAutoChapter");
+          this.tabIndex = 2;
+          break;
+        case 21:
+          this.$router.push("/PaperPage/PaperAutoKnowledgePoint");
+          this.tabIndex = 2;
+          break;
+        default:
+          break;
+      }
+      this.hideDropmenu();
     }
-}
+  }
+};
 </script>
-<style lang="scss" scoped>
-$page-width: 1000px;
-
+<style lang="scss">
 #paper {
   display: flex;
   align-items: center;
@@ -121,7 +119,7 @@ $page-width: 1000px;
 .tab-module {
   width: 120px;
   height: 60px;
-//   padding: 20px 0;
+  //   padding: 20px 0;
   text-align: center;
   line-height: 60px;
   color: white;
@@ -142,6 +140,8 @@ $page-width: 1000px;
 }
 
 .tab-dropdown {
+  position: relative;
+  background: white;
   box-shadow: 0px 2px 32px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   padding: 0px;
