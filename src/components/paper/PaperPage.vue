@@ -27,64 +27,64 @@
 </template>
 <script>
 export default {
-  name: "paper",
-  data() {
-    return {
-      tabIndex: 0,
-      dropmenu1Active: false,
-      dropmenu2Active: false,
-      outFormTab: false,
-      outFormDropmenu: false
-    };
-  },
-  methods: {
-    move: function(message) {
-      console.log(message);
+    name: "paper",
+    data() {
+        return {
+            tabIndex: 0,
+            dropmenu1Active: false,
+            dropmenu2Active: false,
+            outFormTab: false,
+            outFormDropmenu: false
+        };
     },
+    methods: {
+        move: function (message) {
+            console.log(message);
+        },
 
-    showDropmenu: function(index) {
-      this.dropmenu1Active = index == 1;
-      this.dropmenu2Active = index == 2;
-      console.log(index);
-    },
+        showDropmenu: function (index) {
+            this.dropmenu1Active = index == 1;
+            this.dropmenu2Active = index == 2;
+            console.log(index);
+        },
 
-    hideDropmenu: function() {
-      this.dropmenu1Active = false;
-      this.dropmenu2Active = false;
-      this.outFormTab = false;
-      this.outFormDropmenu = false;
-    },
-    /**
-     * @description 切换页面
-     */
-    shiftPage: function(index) {
-      switch (index) {
-        case 0:
-          this.$router.push("/PaperPage");
-          this.tabIndex = 0;
-          break;
-        case 10:
-          this.$router.push("/PaperPage/PaperHandChapter");
-          this.tabIndex = 1;
-          break;
-        case 11:
-          this.$router.push("/PaperPage/PaperHandKnowledgePoint");
-          this.tabIndex = 1;
-          break;
-        case 20:
-          this.$router.push("/PaperPage/PaperAutoChapter");
-          this.tabIndex = 2;
-          break;
-        case 21:
-          this.$router.push("/PaperPage/PaperAutoKnowledgePoint");
-          this.tabIndex = 2;
-          break;
-        default:
-          break;
-      }
-      this.hideDropmenu();
+        hideDropmenu: function () {
+            this.dropmenu1Active = false;
+            this.dropmenu2Active = false;
+            this.outFormTab = false;
+            this.outFormDropmenu = false;
+        },
+        /**
+         * @description 切换页面
+         */
+        shiftPage: function (index) {
+            switch (index) {
+                case 0:
+                    this.$router.push("/PaperPage");
+                    this.tabIndex = 0;
+                    break;
+                case 10:
+                    this.$router.push("/PaperPage/PaperHandChapter");
+                    this.tabIndex = 1;
+                    break;
+                case 11:
+                    this.$router.push("/PaperPage/PaperHandKnowledgePoint");
+                    this.tabIndex = 1;
+                    break;
+                case 20:
+                    this.$router.push("/PaperPage/PaperAutoChapter");
+                    this.tabIndex = 2;
+                    break;
+                case 21:
+                    this.$router.push("/PaperPage/PaperAutoKnowledgePoint");
+                    this.tabIndex = 2;
+                    break;
+                default:
+                    break;
+            }
+            this.hideDropmenu();
+        }
     }
-  }
 };
 </script>
 <style lang="scss">

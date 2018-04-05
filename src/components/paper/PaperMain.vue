@@ -28,54 +28,54 @@
 import paperData from "./PaperData";
 
 export default {
-  name: "exam",
-  data() {
-    return {
-      courseData: paperData.courseData,
-      courseSeniorHigh: [],
-      courseJuniorHigh: [],
-      coursePrimary: [],
-      selectedId: "2-yuwen",
-      selectedName: "高中语文"
-    };
-  },
-  mounted: function() {
-    this.courseData.forEach(element => {
-      switch (element.grade) {
-        case 2:
-          this.courseSeniorHigh.push(element);
-          break;
-        case 1:
-          this.courseJuniorHigh.push(element);
-          break;
-        case 0:
-          this.coursePrimary.push(element);
-          break;
-        default:
-          break;
-      }
-    });
-  },
-  methods: {
-    selectCourse: function(id) {
-      this.selectedId = id;
-      this.courseSeniorHigh.forEach(element => {
-        if (element.id == id) {
-          this.selectedName = "高中" + element.name;
+    name: "exam",
+    data() {
+        return {
+            courseData: paperData.courseData,
+            courseSeniorHigh: [],
+            courseJuniorHigh: [],
+            coursePrimary: [],
+            selectedId: "2-yuwen",
+            selectedName: "高中语文"
+        };
+    },
+    mounted: function () {
+        this.courseData.forEach(element => {
+            switch (element.grade) {
+                case 2:
+                    this.courseSeniorHigh.push(element);
+                    break;
+                case 1:
+                    this.courseJuniorHigh.push(element);
+                    break;
+                case 0:
+                    this.coursePrimary.push(element);
+                    break;
+                default:
+                    break;
+            }
+        });
+    },
+    methods: {
+        selectCourse: function (id) {
+            this.selectedId = id;
+            this.courseSeniorHigh.forEach(element => {
+                if (element.id == id) {
+                    this.selectedName = "高中" + element.name;
+                }
+            });
+            this.courseJuniorHigh.forEach(element => {
+                if (element.id == id) {
+                    this.selectedName = "初中" + element.name;
+                }
+            });
+            this.coursePrimary.forEach(element => {
+                if (element.id == id) {
+                    this.selectedName = "小学" + element.name;
+                }
+            });
         }
-      });
-      this.courseJuniorHigh.forEach(element => {
-        if (element.id == id) {
-          this.selectedName = "初中" + element.name;
-        }
-      });
-      this.coursePrimary.forEach(element => {
-        if (element.id == id) {
-          this.selectedName = "小学" + element.name;
-        }
-      });
     }
-  }
 };
 </script>
 <style lang="scss" scoped>

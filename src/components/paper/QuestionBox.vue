@@ -1,50 +1,68 @@
 <template>
-  <div class="question-box">
-    <div class="question-propert">
-      <div>题号:{{question.id}} &nbsp;&nbsp;&nbsp;&nbsp; 题型:{{question.type}} &nbsp;&nbsp;&nbsp;&nbsp; 难度:{{question.difficulty}}</div>
-      
+    <div class="question-box">
+        <div class="question-operate" v-show="false">
+
+        </div>
+        <div class="question-propert">
+            <div>题号:{{question.id}} &nbsp;&nbsp;&nbsp;&nbsp; 题型:{{question.type}} &nbsp;&nbsp;&nbsp;&nbsp; 难度:{{question.difficulty}}</div>
+
+        </div>
+        <div class="question-body">
+            <h1>我是题目</h1>
+        </div>
+        <div class="question-footer">
+            <button>加入试卷篮</button>
+        </div>
+        <div class="question-answer" v-show="false">
+            <h3>我是答案</h3>
+            <h3>我是解析</h3>
+        </div>
     </div>
-    <div class="question-body">
-        <h1>我是题目</h1>
-    </div>
-    <div class="question-footer">
-      <button>加入试卷篮</button>
-      <button>收藏</button>
-    </div>
-  </div>
 </template>
 <script>
 export default {
-  name: "condition",
-  props: {
-    //从父组件传来的条件数组
-    question: Object
-  },
-  data() {
-    return {
-      //被选中的条件编号
-      selectedIndex: 0
-    };
-  },
-  methods: {
-    /**
-     * 选择条件
-     * @param (int) 条件编号
-     */
-    select: function(index) {
-      this.selectedIndex = index;
-      //在这里使用 this.$emit("事件", 参数...) 来进行子组件向父组件的通信
-      this.$emit("selectCondition", index);
+    name: "condition",
+    props: {
+        //从父组件传来的条件数组
+        question: Object
+    },
+    data() {
+        return {
+            //被选中的条件编号
+            selectedIndex: 0
+        };
+    },
+    methods: {
+        /**
+         * 选择条件
+         * @param (int) 条件编号
+         */
+        select: function (index) {
+            this.selectedIndex = index;
+            //在这里使用 this.$emit("事件", 参数...) 来进行子组件向父组件的通信
+            this.$emit("selectCondition", index);
+        }
     }
-  }
 };
 </script>
 <style lang="scss" scoped>
 .question-box {
+  position: relative;
   margin: 10px;
   border: solid;
-  border-color: gray;
+  border-color: lightgray;
   border-width: 1px;
+}
+
+.question-operate {
+  position: absolute;
+  width: 400px;
+  height: 38px;
+  border: solid;
+  border-width: 1px;
+  border-color: lightgray;
+  top: -40px;
+  right: 0px;
 }
 
 .question-propert {

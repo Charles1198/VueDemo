@@ -18,6 +18,7 @@ import PaperHandChapter from '@/components/paper/PaperHandChapter'
 import PaperHandKnowledgePoint from '@/components/paper/PaperHandKnowledgePoint'
 import PaperAutoChapter from '@/components/paper/PaperAutoChapter'
 import PaperAutoKnowledgePoint from '@/components/paper/PaperAutoKnowledgePoint'
+import TestPaperPreview from '@/components/paper/TestPaperPreview'
 import SvgPage from '@/components/SvgPage'
 
 Vue.use(Router)
@@ -93,6 +94,11 @@ export default new Router({
         {
           path: 'PaperAutoKnowledgePoint',
           component: PaperAutoKnowledgePoint
+        },
+        {
+          name: 'TestPaperPreview',
+          path: 'TestPaperPreview',
+          component: TestPaperPreview
         }
       ]
     },
