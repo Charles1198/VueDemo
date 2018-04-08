@@ -6,16 +6,16 @@
         <div class="paper-tab">
             <div class="paper-tabs">
                 <div class="tab-module" :class="tabIndex == 0 ? 'tab-module-active' : ''" @click="shiftPage(0)">首页</div>
-                <div class="tab-module" :class="tabIndex == 1 ? 'tab-module-active' : ''" @mouseover="showDropmenu(1)">
+                <div class="tab-module" :class="tabIndex == 1 ? 'tab-module-active' : ''" @mouseenter="showDropmenu(1)" @mouseleave="hideDropmenu()">
                     <span>手动组卷</span>
                     <div class="tab-dropdown" v-show='dropmenu1Active'>
                         <div class="link" @click="shiftPage(10)">按章节</div>
                         <div class="link" @click="shiftPage(11)">按知识点</div>
                     </div>
                 </div>
-                <div class="tab-module" :class="tabIndex == 2 ? 'tab-module-active' : ''" @mouseenter="showDropmenu(2)">
-                    <span @mouseenter="move('进入 tab')" @mouseleave="move('离开 tab')">智能组卷</span>
-                    <div class="tab-dropdown" v-show='dropmenu2Active' @mouseenter="move('进入 dropdown')" @mouseleave="move('离开 dropdown')">
+                <div class="tab-module" :class="tabIndex == 2 ? 'tab-module-active' : ''" @mouseenter="showDropmenu(2)" @mouseleave="hideDropmenu()">
+                    <span>智能组卷</span>
+                    <div class="tab-dropdown" v-show='dropmenu2Active'>
                         <div class="link" @click="shiftPage(20)">按章节</div>
                         <div class="link" @click="shiftPage(21)">按知识点</div>
                     </div>
@@ -45,7 +45,6 @@ export default {
         showDropmenu: function (index) {
             this.dropmenu1Active = index == 1;
             this.dropmenu2Active = index == 2;
-            console.log(index);
         },
 
         hideDropmenu: function () {

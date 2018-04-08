@@ -1,12 +1,12 @@
 <template>
     <div id="kp">
         <div id="kp-left">
-            <div id="kp-box-header">
+            <div id="kp-left-header">
                 <span>语文</span>
                 <span>展开</span>
             </div>
-            <div>
-
+            <div id="kp-left-tree">
+                <dataTree :model="model" v-on:clickTreeLeaf="clickTreeLeaf" />
             </div>
         </div>
         <div id="kp-right">
@@ -27,12 +27,14 @@
 import paperData from "./PaperData"
 import conditionBox from "./ConditionBox"
 import filtrateQuestions from "./FiltrateQuestions"
+import dataTree from "./DataTree"
 
 export default {
     name: "exam",
     components: {
         conditionBox,
-        filtrateQuestions
+        filtrateQuestions,
+        dataTree
     },
     data() {
         return {
@@ -40,7 +42,80 @@ export default {
             questionTypes: ["选择", "判断", "填空", "计算", "解答", "证明"],
             //题目难度
             questionDifficulty: ["简单", "一般", "适中"],
-            filtrateConditions: {}
+            filtrateConditions: {},
+            model: {
+                name: '数学',
+                children: [
+                    {
+                        id: '1',
+                        name: '第一章',
+                        children: [
+                            {
+                                id: '1-1',
+                                name: '第一节',
+                                children: [
+                                    {
+                                        id: '1-1-1',
+                                        name: '第一目'
+                                    },
+                                    {
+                                        id: '1-1-2',
+                                        name: '第二目'
+                                    },
+                                ]
+                            },
+                            {
+                                id: '1-2',
+                                name: '第二节',
+                                children: [
+                                    {
+                                        id: '1-2-1',
+                                        name: '第一目'
+                                    },
+                                    {
+                                        id: '1-2-2',
+                                        name: '第二目'
+                                    },
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        id: '2',
+                        name: '第二章',
+                        children: [
+                            {
+                                id: '2-1',
+                                name: '第一节',
+                                children: [
+                                    {
+                                        id: '2-1-1',
+                                        name: '第一目'
+                                    },
+                                    {
+                                        id: '2-1-2',
+                                        name: '第二目'
+                                    },
+                                ]
+                            },
+                            {
+                                id: '2-2',
+                                name: '第二节',
+                                children: [
+                                    {
+                                        id: '2-2-1',
+                                        name: '第一目'
+                                    },
+                                    {
+                                        id: '2-2-2',
+                                        name: '第二目'
+                                    },
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
         }
     },
     methods: {
@@ -57,6 +132,9 @@ export default {
          * @param (int) 难度编号
          */
         selectType: function (id) {
+            console.log(id)
+        },
+        clickTreeLeaf: function (id) {
             console.log(id)
         }
     }
@@ -79,14 +157,20 @@ export default {
   height: 100%;
   background-color: azure;
   margin: 8px;
-  padding: 8px;
   border: solid;
   border-color: gray;
   border-width: 1px;
 
   &-header {
-    height: 40px;
+    padding: 8px;
     background-color: cadetblue;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-tree {
+    margin: 8px;
   }
 }
 

@@ -27,9 +27,9 @@ export default {
          * @param (int) 条件编号
          */
         select: function (index) {
-            this.selectedIndex = index;
+            this.selectedIndex = index
             //在这里使用 this.$emit("事件", 参数...) 来进行子组件向父组件的通信
-            this.$emit("selectCondition", index);
+            this.$emit('selectCondition', index)
         }
     }
 };

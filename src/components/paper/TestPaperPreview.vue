@@ -2,33 +2,33 @@
     <div id="testPaper-preview" @click="stopEdit">
         <!-- 装订线 -->
         <div id="bookbinding-line">
-            <img src="/static/image/bookbindingLine.png" width="47" height="577">
+            <img src="/static/image/bookbindingLine.png" width="47" height="577" v-if="paperStructureCustom.indexOf('bookbindingLine') != -1">
         </div>
         <div id="testPaper-main">
             <!-- 保密标记 -->
-            <div id="secrecy-mark">绝密★启用前</div>
+            <div id="secrecy-mark" v-if="paperStructureCustom.indexOf('secrecyMark') != -1">绝密★启用前</div>
             <!-- 主标题 -->
             <div id="headline">
-                <span v-if="itemToEdit != 'headline'" @click="itemToEdit = 'headline'">{{headlineText}}</span>
+                <span v-if="paperStructureCustom.indexOf('headline') != -1" v-show="itemToEdit != 'headline'" @click="itemToEdit = 'headline'">{{headlineText}}</span>
                 <input class="input" type="text" v-model="headlineText" v-if="itemToEdit == 'headline'" :placeholder="headlineText">
             </div>
             <!-- 副标题 -->
             <div id="subhead">
-                <span v-if="itemToEdit != 'subhead'" @click="itemToEdit = 'subhead'">{{subheadText}}</span>
+                <span v-if="paperStructureCustom.indexOf('subhead') != -1" v-show="itemToEdit != 'subhead'" @click="itemToEdit = 'subhead'">{{subheadText}}</span>
                 <input class="input" type="text" v-model="subheadText" v-if="itemToEdit == 'subhead'" :placeholder="subheadText">
             </div>
             <!-- 试题信息 -->
             <div id="paper-info">
-                <span v-if="itemToEdit != 'paperInfo'" @click="itemToEdit = 'paperInfo'">{{paperInfoText}}</span>
+                <span v-if="paperStructureCustom.indexOf('paperInfo') != -1" v-show="itemToEdit != 'paperInfo'" @click="itemToEdit = 'paperInfo'">{{paperInfoText}}</span>
                 <input class="input" type="text" v-model="paperInfoText" v-if="itemToEdit == 'paperInfo'" :placeholder="paperInfoText">
             </div>
             <!-- 考生信息 -->
             <div id="student-info">
-                <span v-if="itemToEdit != 'studentInfo'" @click="itemToEdit = 'studentInfo'">{{studentInfoText}}</span>
+                <span v-if="paperStructureCustom.indexOf('studentInfo') != -1" v-show="itemToEdit != 'studentInfo'" @click="itemToEdit = 'studentInfo'">{{studentInfoText}}</span>
                 <input class="input" type="text" v-model="studentInfoText" v-if="itemToEdit == 'studentInfo'" :placeholder="studentInfoText">
             </div>
             <!-- 分数栏 -->
-            <div id="score-region">
+            <div v-if="paperStructureCustom.indexOf('scoreTable') != -1" id="score-region">
                 <table id="score-table">
                     <tbody>
                         <tr>
@@ -50,12 +50,12 @@
             </div>
             <!-- 副标题 -->
             <div id="announcements">
-                <span v-if="itemToEdit != 'announcements'" @click="itemToEdit = 'announcements'">{{announcementsText}}</span>
+                <span v-if="paperStructureCustom.indexOf('announcements') != -1" v-show="itemToEdit != 'announcements'" @click="itemToEdit = 'announcements'">{{announcementsText}}</span>
                 <input class="input" type="text" v-model="announcementsText" v-if="itemToEdit == 'announcements'" :placeholder="announcementsText">
             </div>
             <div class="question-type-box" v-for="(questionInType) in questionInTypeList" v-bind:key="questionInType">
                 <div class="question-type-box-head">
-                    <table id="score-table-type">
+                    <table v-if="paperStructureCustom.indexOf('titleTypeScore') != -1" id="score-table-type">
                         <tbody>
                             <tr>
                                 <th>评卷人</th>
@@ -67,10 +67,10 @@
                             </tr>
                         </tbody>
                     </table>
-                    <span>{{questionInType.type}}</span>
+                    <h4 v-if="paperStructureCustom.indexOf('titleType') != -1">{{questionInType.type}}</h4>
                 </div>
                 <div v-for="(question) in questionInType.questionList" v-bind:key="question">
-                    <h1>{{question.title}}</h1>
+                    <questionBox :question="question" :inPaper="true" :showAnswerInPaper="paperShowAnswer" />
                 </div>
             </div>
         </div>
@@ -84,24 +84,26 @@
             </div>
             <div id="paper-structure">试卷结构设置</div>
             <div id="paper-structure-top">
-                <div>设置&nbsp;&nbsp;</div>
-                <label><input type="radio" value="default" />默认&nbsp;&nbsp;</label>
-                <label><input type="radio" value="homework" />作业&nbsp;&nbsp;</label>
-                <label><input type="radio" value="quiz" />测验&nbsp;&nbsp;</label>
-                <label><input type="radio" value="exam" />试卷&nbsp;&nbsp;</label>
+                <div>设置&nbsp;&nbsp;&nbsp;</div>
+                <label class="radio"><input type="radio" value="default" v-model="paperStructureAuto" />默认</label>
+                <label class="radio"><input type="radio" value="homework" v-model="paperStructureAuto" />作业</label>
+                <label class="radio"><input type="radio" value="quiz" v-model="paperStructureAuto" />测验</label>
+                <label class="radio"><input type="radio" value="exam" v-model="paperStructureAuto" />试卷</label>
             </div>
             <div id="paper-structure-top">
-                <label class="checkbox"><input type="checkbox" value="default" />装订线</label>
-                <label class="checkbox"><input type="checkbox" value="homework" />保密标志</label>
-                <label class="checkbox"><input type="checkbox" value="quiz" />大标题</label>
-                <label class="checkbox"><input type="checkbox" value="exam" />副标题</label>
-                <label class="checkbox"><input type="checkbox" value="exam" />考试信息</label>
-                <label class="checkbox"><input type="checkbox" value="exam" />学生信息</label>
-                <label class="checkbox"><input type="checkbox" value="exam" />分数栏</label>
-                <label class="checkbox"><input type="checkbox" value="exam" />注意事项</label>
+                <label class="checkbox"><input type="checkbox" value="bookbindingLine" v-model="paperStructureCustom" />装订线</label>
+                <label class="checkbox"><input type="checkbox" value="secrecyMark" v-model="paperStructureCustom" />保密标志</label>
+                <label class="checkbox"><input type="checkbox" value="headline" v-model="paperStructureCustom" />大标题</label>
+                <label class="checkbox"><input type="checkbox" value="subhead" v-model="paperStructureCustom" />副标题</label>
+                <label class="checkbox"><input type="checkbox" value="examInfo" v-model="paperStructureCustom" />考试信息</label>
+                <label class="checkbox"><input type="checkbox" value="studentInfo" v-model="paperStructureCustom" />学生信息</label>
+                <label class="checkbox"><input type="checkbox" value="scoreTable" v-model="paperStructureCustom" />分数栏</label>
+                <label class="checkbox"><input type="checkbox" value="announcements" v-model="paperStructureCustom" />注意事项</label>
+                <label class="checkbox"><input type="checkbox" value="titleTypeScore" v-model="paperStructureCustom" />大题评分区</label>
+                <label class="checkbox"><input type="checkbox" value="titleType" v-model="paperStructureCustom" />大题</label>
             </div>
             <div id="paper-structure-top">
-                <label class="checkbox"><input type="checkbox" value="default" />显示答案与解析</label>
+                <label class="checkbox"><input type="checkbox" v-model="paperShowAnswer" />显示答案与解析</label>
             </div>
             <div id="paper-structure">试题统计</div>
         </div>
@@ -109,8 +111,13 @@
 </template>
 
 <script>
+import questionBox from './QuestionBox'
+
 export default {
     name: 'testPaper-preview',
+    components: {
+        questionBox
+    },
     data() {
         return {
             itemToEdit: '',
@@ -119,6 +126,9 @@ export default {
             paperInfoText: '考试范围：xxx；考试时间：100分钟；命题人：xxx',
             studentInfoText: '学校：___________ 姓名：___________ 班级：___________ 考号：___________',
             announcementsText: '1、答题前填写好自己的姓名、班级、考号等信息 2、请将答案正确填写在答题卡上',
+            paperStructureAuto: 'default',
+            paperStructureCustom: ['bookbindingLine', 'secrecyMark', 'headline', 'subhead', 'examInfo', 'studentInfo', 'scoreTable', 'announcements', 'titleTypeScore', 'titleType'],
+            paperShowAnswer: false,
             //分类存放的题目列表
             questionInTypeList: []
         }
@@ -211,6 +221,7 @@ $dimen-testPaper-main-width: $page-width - $dimen-bookbinding-line-width -
 
 #testPaper-main {
   width: $dimen-testPaper-main-width;
+  margin: 40px 0;
 }
 
 .input {
@@ -222,7 +233,7 @@ $dimen-testPaper-main-width: $page-width - $dimen-bookbinding-line-width -
 }
 
 #secrecy-mark {
-  margin: 20px 0 0 20px;
+  margin: 0 0 0 20px;
 }
 
 #headline {
@@ -343,6 +354,10 @@ td {
     flex-wrap: wrap;
     align-items: center;
   }
+}
+
+.radio {
+  margin: 4px 12px 4px 0;
 }
 
 .checkbox {
