@@ -8,7 +8,6 @@ import Axios from '@/components/Axios'
 import FunctionTest from '@/components/functionTest/FunctionTest'
 import TestPage from '@/components/functionTest/TestPage'
 import Canvas from '@/components/canvas/Canvas'
-import Sort from '@/components/sort/Sort'
 import Zhihu from '@/components/zhihu/Zhihu'
 import AnimPage from '@/components/animation/AnimPage'
 import UploadFile from '@/components/UploadFile'
@@ -56,10 +55,6 @@ export default new Router({
       component: Canvas
     },
     {
-      path: '/Sort',
-      component: Sort
-    },
-    {
       path: '/Zhihu',
       component: Zhihu
     },
@@ -74,8 +69,7 @@ export default new Router({
     {
       path: '/PaperPage',
       component: PaperPage,
-      children: [
-        {
+      children: [{
           path: '',
           component: PaperMain
         },

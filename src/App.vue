@@ -1,30 +1,34 @@
 <template>
-  <div id="app">
-    <div class="home_bar">
-      <span class="home_bar_title">Charles</span>
-      <router-link class="home_bar_home" to="/">主页</router-link>
+    <div id="app">
+        <div class="home_bar">
+            <span class="home_bar_title">Charles</span>
+            <router-link class="home_bar_home" to="/">主页</router-link>
+        </div>
+        <div class="home-body">
+            <router-view/>
+        </div>
     </div>
-    <router-view/>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+    name: 'app'
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   color: #2c3e50;
   height: 100%;
 }
 
 .home_bar {
+  width: 100%;
+  position: fixed;
+  top: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -46,5 +50,10 @@ export default {
   margin: 0px 60px;
   color: white;
   text-decoration-line: none;
+}
+
+.home-body {
+  overflow: scroll;
+  margin-top: 72px;
 }
 </style>

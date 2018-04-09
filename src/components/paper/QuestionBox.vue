@@ -2,11 +2,11 @@
     <div class="question-box" :class="showOperate ? 'question-box-show-operate' : ''" @mouseenter="showOperate = true" @mouseleave="showOperate = false">
         <!-- 需要频繁显示/隐藏使用v-show（会渲染），否则用v-if（不会渲染） -->
         <div class="question-operate" v-if="inPaper" v-show="showOperate">
-            <button class="question-operate-btn">收藏</button>
-            <button class="question-operate-btn">删除</button>
-            <button class="question-operate-btn">替换</button>
-            <button class="question-operate-btn">上移</button>
-            <button class="question-operate-btn">下移</button>
+            <button class="question-operate-btn" @click="operateQuestion(0)">收藏</button>
+            <button class="question-operate-btn" @click="operateQuestion(1)">删除</button>
+            <button class="question-operate-btn" @click="operateQuestion(2)">替换</button>
+            <button class="question-operate-btn" @click="operateQuestion(3)">上移</button>
+            <button class="question-operate-btn" @click="operateQuestion(4)">下移</button>
         </div>
         <div class="question-propert" v-if="!inPaper">
             <div>题号:{{question.id}} &nbsp;&nbsp;&nbsp;&nbsp; 题型:{{question.type}} &nbsp;&nbsp;&nbsp;&nbsp; 难度:{{question.difficulty}}</div>
@@ -41,7 +41,9 @@ export default {
         };
     },
     methods: {
-
+        operateQuestion: function (eventIndex) {
+            this.$emit('operateQuestion', eventIndex, this.question.id)
+        }
     }
 };
 </script>
