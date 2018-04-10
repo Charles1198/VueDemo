@@ -10,6 +10,7 @@ import TestPage from '@/components/functionTest/TestPage'
 import Canvas from '@/components/canvas/Canvas'
 import Zhihu from '@/components/zhihu/Zhihu'
 import AnimPage from '@/components/animation/AnimPage'
+import CSSAnim from '@/components/animation/CSSAnim'
 import UploadFile from '@/components/UploadFile'
 import PaperPage from '@/components/paper/PaperPage'
 import PaperMain from '@/components/paper/PaperMain'
@@ -61,6 +62,10 @@ export default new Router({
     {
       path: '/AnimPage',
       component: AnimPage
+    },
+    {
+      path: '/CSSAnim',
+      component: CSSAnim
     },
     {
       path: '/UploadFile',

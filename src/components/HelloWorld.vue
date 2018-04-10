@@ -22,6 +22,7 @@ export default {
                 { title: 'Canvas 使用', link: '/Canvas' },
                 { title: '仿知乎对战', link: '/Zhihu' },
                 { title: '动效', link: '/AnimPage' },
+                { title: 'CSS 动画', link: '/CSSAnim' },
                 { title: '上传文件', link: '/UploadFile' },
                 { title: '组卷页面', link: '/PaperPage' },
                 { title: 'Svg 使用', link: '/SvgPage' },
