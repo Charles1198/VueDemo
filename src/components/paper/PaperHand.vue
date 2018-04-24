@@ -1,25 +1,37 @@
 <template>
-  <div id="kp">
-    <div id="kp-left">
-      <div id="kp-left-header">
-        <span>语文</span>
-        <span>展开</span>
-      </div>
-      <div id="kp-left-tree">
-        <dataTree :model="model" v-on:clickTreeLeaf="clickTreeLeaf" />
-      </div>
+  <div id="paper-hand">
+    <!-- 章节/知识点 选择器 -->
+    <cusTab :tabs="['按章节选题', '按知识点选题']"/>
+    <div id="type-selector">
+      <div class="botton-line"></div>
+      <div class="botton-line"></div>
     </div>
-    <div id="kp-right">
-      <div class="condition">
-        <!-- 在这里用 v-on:事件="函数" 来使父组件响应子组件里面的自定义函数，其中“事件”是子组件中定义的事件，函数是父组件用来响应子组建通信的函数，这里不用写参数 -->
-        <!-- 使用 props 传递参数时，使用 参数名="参数" 时参数是普通 string 类型，使用 :参数名="参数" 时参数是动态 object 类型 -->
-        <conditionBox title="题目类型:" :conditions="questionTypes" v-on:selectCondition="selectType" />
+    <el-radio-group v-model="radio3">
+      <el-radio-button label="按章节选题"></el-radio-button>
+      <el-radio-button label="按知识点选题"></el-radio-button>
+    </el-radio-group>
+    <div id="kp">
+      <div id="kp-left">
+        <div id="kp-left-header">
+          <span>语文</span>
+          <span>展开</span>
+        </div>
+        <div id="kp-left-tree">
+          <dataTree :model="model" v-on:clickTreeLeaf="clickTreeLeaf" />
+        </div>
       </div>
-      <div class="condition">
-        <conditionBox title="题目难度:" :conditions="questionDifficulty" v-on:selectCondition="selectDifficultyLevel" />
+      <div id="kp-right">
+        <div class="condition">
+          <!-- 在这里用 v-on:事件="函数" 来使父组件响应子组件里面的自定义函数，其中“事件”是子组件中定义的事件，函数是父组件用来响应子组建通信的函数，这里不用写参数 -->
+          <!-- 使用 props 传递参数时，使用 参数名="参数" 时参数是普通 string 类型，使用 :参数名="参数" 时参数是动态 object 类型 -->
+          <conditionBox title="题目类型:" :conditions="questionTypes" v-on:selectCondition="selectType" />
+        </div>
+        <div class="condition">
+          <conditionBox title="题目难度:" :conditions="questionDifficulty" v-on:selectCondition="selectDifficultyLevel" />
+        </div>
+        <!--筛选试卷  -->
+        <filtrateQuestions :filtrateConditions="filtrateConditions" />
       </div>
-      <!--筛选试卷  -->
-      <filtrateQuestions :filtrateConditions="filtrateConditions" />
     </div>
   </div>
 </template>
@@ -28,13 +40,15 @@ import paperData from "./PaperData"
 import conditionBox from "./ConditionBox"
 import filtrateQuestions from "./FiltrateQuestions"
 import dataTree from "./DataTree"
+import cusTab from "./views/CusTab"
 
 export default {
-  name: "exam",
+  name: "paperHand",
   components: {
     conditionBox,
     filtrateQuestions,
-    dataTree
+    dataTree,
+    cusTab
   },
   data() {
     return {
@@ -141,10 +155,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-#kp {
+#paper-hand {
   width: $page-width;
-  display: flex;
   margin: auto;
+}
+
+#kp {
+  display: flex;
 }
 
 #question-set {

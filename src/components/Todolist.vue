@@ -24,8 +24,6 @@
         </div>
       </transition-group>
     </div>
-    
-    
   </div>
 </template>
 
@@ -39,12 +37,12 @@ export default {
       todolist: []
     };
   },
-  mounted: function() {
+  mounted: function () {
     var localTodo = localStorage.getItem("todoList");
     this.todolist = JSON.parse(localTodo);
   },
   methods: {
-    addTodo: function() {
+    addTodo: function () {
       if (this.editingItem == "") {
         return;
       }
@@ -54,7 +52,7 @@ export default {
 
       this.saveTodo();
     },
-    finishTodo: function(index) {
+    finishTodo: function (index) {
       if (this.todolist[index].finished == false) {
         this.todolist[index].finished = true;
       } else {
@@ -66,7 +64,7 @@ export default {
 
       this.saveTodo();
     },
-    saveTodo: function() {
+    saveTodo: function () {
       localStorage.setItem("todoList", JSON.stringify(this.todolist));
     }
   }

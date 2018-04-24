@@ -124,7 +124,7 @@ export default {
     },
 
     saveBack: function () {
-      
+
     }
   },
   beforeRouteLeave: (to, from, next) => {

@@ -1,103 +1,115 @@
 <template>
-    <div id="paper">
-        <div class="paper-head">
-            <h1>组卷系统</h1>
+  <div id="paper">
+    <!-- <login/> -->
+    <div class="paper-tab">
+      <div class="paper-tabs">
+        <div class="tab-module" :class="tabIndex == 0 ? 'tab-module-active' : ''" @click="shiftPage(0)">首页</div>
+        <div class="tab-module" :class="tabIndex == 1 ? 'tab-module-active' : ''" @mouseenter="showDropmenu(1)" @mouseleave="hideDropmenu()">
+          <span>手动组卷</span>
+          <div class="tab-dropdown" v-show='dropmenu1Active'>
+            <div class="link" @click="shiftPage(10)">按章节</div>
+            <div class="link" @click="shiftPage(11)">按知识点</div>
+            <div class="link" @click="shiftPage(12)">手动组卷</div>
+          </div>
         </div>
-        <div class="paper-tab">
-            <div class="paper-tabs">
-                <div class="tab-module" :class="tabIndex == 0 ? 'tab-module-active' : ''" @click="shiftPage(0)">首页</div>
-                <div class="tab-module" :class="tabIndex == 1 ? 'tab-module-active' : ''" @mouseenter="showDropmenu(1)" @mouseleave="hideDropmenu()">
-                    <span>手动组卷</span>
-                    <div class="tab-dropdown" v-show='dropmenu1Active'>
-                        <div class="link" @click="shiftPage(10)">按章节</div>
-                        <div class="link" @click="shiftPage(11)">按知识点</div>
-                    </div>
-                </div>
-                <div class="tab-module" :class="tabIndex == 2 ? 'tab-module-active' : ''" @mouseenter="showDropmenu(2)" @mouseleave="hideDropmenu()">
-                    <span>智能组卷</span>
-                    <div class="tab-dropdown" v-show='dropmenu2Active'>
-                        <div class="link" @click="shiftPage(20)">按章节</div>
-                        <div class="link" @click="shiftPage(21)">按知识点</div>
-                    </div>
-                </div>
-            </div>
+        <div class="tab-module" :class="tabIndex == 2 ? 'tab-module-active' : ''" @mouseenter="showDropmenu(2)" @mouseleave="hideDropmenu()">
+          <span>智能组卷</span>
+          <div class="tab-dropdown" v-show='dropmenu2Active'>
+            <div class="link" @click="shiftPage(20)">按章节</div>
+            <div class="link" @click="shiftPage(21)">按知识点</div>
+          </div>
         </div>
-        <router-view></router-view>
+        <div class="space"></div>
+        <router-link class="tab-module" to="/PaperPage/TeacherPage">教师</router-link>
+      </div>
     </div>
+    <div class="router">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 <script>
+import login from './Login.vue'
+
 export default {
-    name: "paper",
-    data() {
-        return {
-            tabIndex: 0,
-            dropmenu1Active: false,
-            dropmenu2Active: false,
-            outFormTab: false,
-            outFormDropmenu: false
-        };
+  name: "paper",
+  components: {
+    login
+  },
+  data() {
+    return {
+      tabIndex: 0,
+      dropmenu1Active: false,
+      dropmenu2Active: false,
+      outFormTab: false,
+      outFormDropmenu: false
+    };
+  },
+  methods: {
+    move: function (message) {
+      console.log(message);
     },
-    methods: {
-        move: function (message) {
-            console.log(message);
-        },
 
-        showDropmenu: function (index) {
-            this.dropmenu1Active = index == 1;
-            this.dropmenu2Active = index == 2;
-        },
+    showDropmenu: function (index) {
+      this.dropmenu1Active = index == 1;
+      this.dropmenu2Active = index == 2;
+    },
 
-        hideDropmenu: function () {
-            this.dropmenu1Active = false;
-            this.dropmenu2Active = false;
-            this.outFormTab = false;
-            this.outFormDropmenu = false;
-        },
-        /**
-         * @description 切换页面
-         */
-        shiftPage: function (index) {
-            switch (index) {
-                case 0:
-                    this.$router.push("/PaperPage");
-                    this.tabIndex = 0;
-                    break;
-                case 10:
-                    this.$router.push("/PaperPage/PaperHandChapter");
-                    this.tabIndex = 1;
-                    break;
-                case 11:
-                    this.$router.push("/PaperPage/PaperHandKnowledgePoint");
-                    this.tabIndex = 1;
-                    break;
-                case 20:
-                    this.$router.push("/PaperPage/PaperAutoChapter");
-                    this.tabIndex = 2;
-                    break;
-                case 21:
-                    this.$router.push("/PaperPage/PaperAutoKnowledgePoint");
-                    this.tabIndex = 2;
-                    break;
-                default:
-                    break;
-            }
-            this.hideDropmenu();
-        }
+    hideDropmenu: function () {
+      this.dropmenu1Active = false;
+      this.dropmenu2Active = false;
+      this.outFormTab = false;
+      this.outFormDropmenu = false;
+    },
+    /**
+     * @description 切换页面
+     */
+    shiftPage: function (index) {
+      switch (index) {
+        case 0:
+          this.$router.push("/PaperPage");
+          this.tabIndex = 0;
+          break;
+        case 10:
+          this.$router.push("/PaperPage/PaperHandChapter");
+          this.tabIndex = 1;
+          break;
+        case 11:
+          this.$router.push("/PaperPage/PaperHandKnowledgePoint");
+          this.tabIndex = 1;
+          break;
+        case 12:
+          this.$router.push("/PaperPage/PaperHand");
+          this.tabIndex = 1;
+          break;
+        case 20:
+          this.$router.push("/PaperPage/PaperAutoChapter");
+          this.tabIndex = 2;
+          break;
+        case 21:
+          this.$router.push("/PaperPage/PaperAutoKnowledgePoint");
+          this.tabIndex = 2;
+          break;
+        default:
+          break;
+      }
+      this.hideDropmenu();
     }
+  }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 #paper {
-  display: flex;
   align-items: center;
-  flex-direction: column;
 }
 
-.paper-head {
-  width: $page-width;
+.space {
+  flex: 1;
 }
 
 .paper-tab {
+  position: fixed;
+  top: 72px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -144,6 +156,11 @@ export default {
   box-shadow: 0px 2px 32px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   padding: 0px;
+}
+
+.router {
+  margin-top: 60px;
+  background: #fafaf1;
 }
 
 //使用 router-link-active 时，主路由 /PaperPage 总是 active 的，使用 router-link-exact-active 才可以

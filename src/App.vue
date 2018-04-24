@@ -32,7 +32,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #03a9f4;
+  background-color: #03a8f4ee;
   height: 72px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
 }

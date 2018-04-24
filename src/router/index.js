@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+
 import HelloWorld from '@/components/HelloWorld'
 
 import Todolist from '@/components/Todolist'
@@ -14,12 +16,22 @@ import CSSAnim from '@/components/animation/CSSAnim'
 import UploadFile from '@/components/UploadFile'
 import PaperPage from '@/components/paper/PaperPage'
 import PaperMain from '@/components/paper/PaperMain'
+import PaperHand from '@/components/paper/PaperHand'
 import PaperHandChapter from '@/components/paper/PaperHandChapter'
 import PaperHandKnowledgePoint from '@/components/paper/PaperHandKnowledgePoint'
 import PaperAutoChapter from '@/components/paper/PaperAutoChapter'
 import PaperAutoKnowledgePoint from '@/components/paper/PaperAutoKnowledgePoint'
-import TestPaperPreview from '@/components/paper/TestPaperPreview'
+import PaperPreview from '@/components/paper/PaperPreview'
+import TeacherPage from '@/components/paper/teacher/TeacherPage'
+import TeacherProfile from '@/components/paper/teacher/TeacherProfile'
+import TeacherPaperManage from '@/components/paper/teacher/TeacherPaperManage'
+import TeacherCollection from '@/components/paper/teacher/TeacherCollection'
+import TeacherCollectionPaper from '@/components/paper/teacher/TeacherCollectionPaper'
+import TeacherCollectionQuestion from '@/components/paper/teacher/TeacherCollectionQuestion'
 import SvgPage from '@/components/SvgPage'
+import Tangram from '@/components/Tangram'
+import VuexPage1 from '@/components/vuex/VuexPage1'
+import VuexPage2 from '@/components/vuex/VuexPage2'
 
 Vue.use(Router)
 
@@ -79,6 +91,10 @@ export default new Router({
           component: PaperMain
         },
         {
+          path: 'PaperHand',
+          component: PaperHand
+        },
+        {
           path: 'PaperHandChapter',
           component: PaperHandChapter
         },
@@ -95,15 +111,53 @@ export default new Router({
           component: PaperAutoKnowledgePoint
         },
         {
-          name: 'TestPaperPreview',
-          path: 'TestPaperPreview',
-          component: TestPaperPreview
+          path: 'PaperPreview',
+          name: 'PaperPreview',
+          component: PaperPreview
+        },
+        {
+          path: 'TeacherPage',
+          component: TeacherPage,
+          children: [{
+              path: '',
+              component: TeacherProfile
+            },
+            {
+              path: 'TeacherPaperManage',
+              component: TeacherPaperManage
+            },
+            {
+              path: 'TeacherCollection',
+              component: TeacherCollection,
+              children: [{
+                  path: '',
+                  component: TeacherCollectionQuestion
+                },
+                {
+                  path: 'TeacherCollectionPaper',
+                  component: TeacherCollectionPaper
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       path: '/SvgPage',
       component: SvgPage
+    },
+    {
+      path: '/Tangram',
+      component: Tangram
+    },
+    {
+      path: '/VuexPage1',
+      component: VuexPage1
+    },
+    {
+      path: '/VuexPage2',
+      component: VuexPage2
     }
   ]
 })

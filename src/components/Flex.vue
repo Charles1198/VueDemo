@@ -154,7 +154,7 @@
 <script>
 export default {
   name: "flex",
-  
+
 };
 </script>
 
@@ -252,7 +252,7 @@ export default {
 
 .flex-wrap-nowrap {
   display: flex;
-  width:33%;
+  width: 33%;
   margin: 0px 10px;
   flex-wrap: nowrap;
   border: solid;
@@ -263,7 +263,7 @@ export default {
 
 .flex-wrap-wrap {
   display: flex;
-  width:33%;
+  width: 33%;
   margin: 0px 10px;
   flex-wrap: wrap;
   border: solid;
@@ -274,7 +274,7 @@ export default {
 
 .flex-wrap-wrap-reverse {
   display: flex;
-  width:33%;
+  width: 33%;
   margin: 0px 10px;
   flex-wrap: wrap-reverse;
   border: solid;
@@ -285,7 +285,7 @@ export default {
 
 .justify-conten-flex-start {
   display: flex;
-  width:20%;
+  width: 20%;
   margin: 0px 10px;
   justify-content: flex-start;
   border: solid;
@@ -296,7 +296,7 @@ export default {
 
 .justify-conten-flex-end {
   display: flex;
-  width:20%;
+  width: 20%;
   margin: 0px 10px;
   justify-content: flex-end;
   border: solid;
@@ -307,7 +307,7 @@ export default {
 
 .justify-conten-center {
   display: flex;
-  width:20%;
+  width: 20%;
   margin: 0px 10px;
   justify-content: center;
   border: solid;
@@ -318,7 +318,7 @@ export default {
 
 .justify-conten-space-between {
   display: flex;
-  width:20%;
+  width: 20%;
   margin: 0px 10px;
   justify-content: space-between;
   border: solid;
@@ -329,7 +329,7 @@ export default {
 
 .justify-conten-space-around {
   display: flex;
-  width:20%;
+  width: 20%;
   margin: 0px 10px;
   justify-content: space-around;
   border: solid;
@@ -340,7 +340,7 @@ export default {
 
 .align-items-flex-start {
   display: flex;
-  width:20%;
+  width: 20%;
   margin: 0px 10px;
   align-items: flex-start;
   border: solid;
@@ -351,7 +351,7 @@ export default {
 
 .align-items-flex-end {
   display: flex;
-  width:20%;
+  width: 20%;
   margin: 0px 10px;
   align-items: flex-end;
   border: solid;
@@ -362,7 +362,7 @@ export default {
 
 .align-items-center {
   display: flex;
-  width:20%;
+  width: 20%;
   margin: 0px 10px;
   align-items: center;
   border: solid;
@@ -373,7 +373,7 @@ export default {
 
 .align-items-baseline {
   display: flex;
-  width:20%;
+  width: 20%;
   margin: 0px 10px;
   align-items: baseline;
   border: solid;
@@ -384,7 +384,7 @@ export default {
 
 .align-items-stretch {
   display: flex;
-  width:20%;
+  width: 20%;
   margin: 0px 10px;
   align-items: stretch;
   border: solid;
@@ -514,6 +514,4 @@ export default {
   flex-basis: auto;
   /* width: 300px; */
 }
-
-
 </style>

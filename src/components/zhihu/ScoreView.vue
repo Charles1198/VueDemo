@@ -20,7 +20,7 @@ span {
 }
 
 .score-outter {
-  margin: auto; 
+  margin: auto;
   width: 12px;
   height: 300px;
   border-radius: 12px;
