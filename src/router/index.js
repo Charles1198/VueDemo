@@ -32,6 +32,9 @@ import SvgPage from '@/components/SvgPage'
 import Tangram from '@/components/Tangram'
 import VuexPage1 from '@/components/vuex/VuexPage1'
 import VuexPage2 from '@/components/vuex/VuexPage2'
+import ParentPage from '@/components/asyn/ParentPage'
+import Html2Word from '@/components/Html2Word'
+import Html2Pdf from '@/components/Html2Pdf'
 
 Vue.use(Router)
 
@@ -158,6 +161,18 @@ export default new Router({
     {
       path: '/VuexPage2',
       component: VuexPage2
+    },
+    {
+      path: '/ParentPage',
+      component: ParentPage
+    },
+    {
+      path: '/Html2Word',
+      component: Html2Word
+    },
+    {
+      path: '/Html2Pdf',
+      component: Html2Pdf
     }
   ]
 })

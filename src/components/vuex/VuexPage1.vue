@@ -1,8 +1,6 @@
 <template>
   <div id="vuex">
     <h2>Page1</h2>
-    <div>测试使用 Vuex 进行跨页面的参数传递和状态保存</div>
-    <br>
     <span>单选框：</span>
     <el-radio-group v-model="radioValue">
       <el-radio label="value1">选项1</el-radio>
@@ -24,6 +22,10 @@ export default {
       radioValue: 'value1',
       inputValue: 'inputValue'
     }
+  },
+  mounted() {
+    this.radioValue = this.$store.state.radioValue;
+    this.inputValue = this.$store.state.inputValue;
   },
   methods: {
     toPage2() {

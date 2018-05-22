@@ -25,7 +25,10 @@ export default {
         { title: '组卷页面', link: '/PaperPage' },
         { title: 'Svg 使用', link: '/SvgPage' },
         { title: '七巧板', link: '/Tangram' },
-        { title: 'Vuex 使用', link: '/VuexPage1' }
+        { title: 'Vuex 使用', link: '/VuexPage1' },
+        { title: 'Asyn', link: '/ParentPage' },
+        { title: 'Html to Word', link: '/Html2Word' },
+        { title: 'Html to Pdf', link: '/Html2Pdf' },
       ]
     };
   },
@@ -40,7 +43,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .hello {
-  margin: 0 100px;
+  margin: auto;
   overflow: scroll;
   display: flex;
   flex-wrap: wrap;

@@ -54,6 +54,6 @@ export default {
 
 .home-body {
   overflow: scroll;
-  margin-top: 72px;
+  margin: 72px 60px 0 60px;
 }
 </style>

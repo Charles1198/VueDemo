@@ -5,8 +5,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    radioValue: null,
-    inputValue: null
+    radioValue: [],
+    inputValue: ""
   },
   mutations: {
     SET_RadioValue(state, radioValue) {
