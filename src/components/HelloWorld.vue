@@ -29,6 +29,7 @@ export default {
         { title: 'Asyn', link: '/ParentPage' },
         { title: 'Html to Word', link: '/Html2Word' },
         { title: 'Html to Pdf', link: '/Html2Pdf' },
+        { title: 'Html 根据内容高度分页', link: '/HtmlPaging' },
       ]
     };
   },

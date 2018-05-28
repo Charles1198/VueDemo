@@ -35,6 +35,7 @@ import VuexPage2 from '@/components/vuex/VuexPage2'
 import ParentPage from '@/components/asyn/ParentPage'
 import Html2Word from '@/components/Html2Word'
 import Html2Pdf from '@/components/Html2Pdf'
+import HtmlPaging from '@/components/HtmlPaging'
 
 Vue.use(Router)
 
@@ -173,6 +174,10 @@ export default new Router({
     {
       path: '/Html2Pdf',
       component: Html2Pdf
+    },
+    {
+      path: '/HtmlPaging',
+      component: HtmlPaging
     }
   ]
 })
